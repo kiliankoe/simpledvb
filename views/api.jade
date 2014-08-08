@@ -1,8 +1,49 @@
 extends layout
 
 block content
-  h1 SimpleDVB API
-  p.lead Here's how the RESTful API works
-  hr
+    h1 SimpleDVB API
+    p.lead Here's how the RESTful API works
+    hr
 
-  p Coming soon :)
+    h3 Monitor a stop
+    p Monitor a single stop to see every bus or tram leaving this stop.
+
+    pre
+        a(href='http://simpledvb.herokuapp.com/api/monitor/helmholtzstrasse') /api/monitor/helmholtzstrasse
+
+    pre
+        | [{
+        |   line: "85",
+        |   direction: "Striesen",
+        |   arrivaltime: "4"
+        | }]
+
+    p You can also specify how many results to return by adding the number to the end of the route.
+
+    pre
+        a(href='http://simpledvb.herokuapp.com/api/monitor/helmholtzstrasse/2') /api/monitor/helmholtzstrasse/2
+
+    pre
+        | [{
+        |   line: "85",
+        |   direction: "Striesen",
+        |   arrivaltime: "4"
+        | },
+        | {
+        |   line: "85",
+        |   direction: "Löbtau Süd",
+        |   arrivaltime: "4"
+        | }]
+
+
+    h3 Find a stop
+    p Search for a single stop in the network of the DVB. Also returns the coordinates of this stop (in Gauß-Krüger coordinates, for now at least).
+
+    pre
+        a(href='http://simpledvb.herokuapp.com/api/find/zellesch') /api/find/zellesch
+
+    pre
+        | [{
+        |  stop: 'Zellescher Weg',
+        |  coords: '4622580.00000,503749.00000'
+        | }]
