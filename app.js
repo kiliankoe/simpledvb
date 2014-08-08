@@ -21,7 +21,7 @@ var connectAssets = require('connect-assets');
  */
 
 var homeController = require('./controllers/home');
-var apiController = require('./controllers/api');
+var apiController = require('./controllers/api')();
 
 /**
  * Create Express server
@@ -53,7 +53,17 @@ app.use(express.static(path.join(__dirname, 'public')));
  */
 
 app.get('/', homeController.index);
+
+/**
+ * API Routes
+ */
+
 app.get('/api', apiController.index);
+
+app.get('/api/monitor/:stop/:numresults', apiController.monitorNum);
+app.get('/api/monitor/:stop', apiController.monitor);
+
+app.get('/api/find/:stop', apiController.find);
 
 /**
  * 500 Error Handler.
@@ -66,7 +76,7 @@ app.use(errorHandler());
  */
 
 app.listen(app.get('port'), function() {
-  console.log('Express server listening on port %d in %s mode', app.get('port'), app.get('env'));
+  console.log('Express server listening on http://localhost:%d in %s mode', app.get('port'), app.get('env'));
 });
 
 module.exports = app;
