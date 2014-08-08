@@ -3,7 +3,6 @@
  */
 
 var express = require('express');
-var cookieParser = require('cookie-parser');
 var compress = require('compression');
 var session = require('express-session');
 var bodyParser = require('body-parser');
