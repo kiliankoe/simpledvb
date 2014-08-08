@@ -28,6 +28,17 @@ module.exports = function(){
         });
     };
 
+    module.route = function(req, res){
+        var origin = req.params.origin;
+        var destination = req.params.destination;
+        var time = new Date();
+
+        dvb.route(origin, destination, time, 0, function(data){
+             res.set('Content-Type', 'text/json');
+             res.send(data);
+        });
+    };
+
     module.find = function(req, res){
         var stop = req.params.stop;
 

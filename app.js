@@ -63,6 +63,8 @@ app.get('/api', apiController.index);
 app.get('/api/monitor/:stop/:numresults', apiController.monitorNum);
 app.get('/api/monitor/:stop', apiController.monitor);
 
+app.get('/api/route/:origin/:destination', apiController.route);
+
 app.get('/api/find/:stop', apiController.find);
 
 /**

@@ -2,7 +2,7 @@ extends layout
 
 block content
     h1 SimpleDVB API
-    p.lead Here's how the RESTful API works
+    p.lead SimpleDVB also includes a RESTful API which returns pretty json, use it as follows.
     hr
 
     h3 Monitor a stop
@@ -35,9 +35,52 @@ block content
         |   arrivaltime: "4"
         | }]
 
+    h3 Find a route
+    p Query the server for possible routes from one stop to another. Returns multiple possible trips, the bus-/tramlines to be taken, the single stops where the interchanges happen, the arrival and departure times for each of these stops and their coordinates (in Gauß-Krüger coordinates, for now at least).
+
+    pre
+        a(href='http://simpledvb.herokuapp.com/api/route/helmholtzstrasse/zellescherweg') /api/route/helmholtzstrasse/zellescherweg
+
+    pre
+        | {
+        |    "origin": "Dresden, Helmholtzstraße",
+        |    "destination": "Dresden, Zellescher Weg",
+        |    "trips": [{
+        |        "departure": "13:34",
+        |        "arrival": "13:56",
+        |        "duration": "00:22",
+        |        "interchange": "2",
+        |        "nodes": [{
+        |            "mode": "Stadtbus",
+        |            "line": "85",
+        |            "direction": "DD Löbtau Süd Mohorner Str.",
+        |            "departure": {
+        |                "stop": "Helmholtzstraße",
+        |                "time": "13:34",
+        |                "coords": "4621158.00000,504097.00000"
+        |            },
+        |            "arrival": {
+        |                "stop": "Plauen Nöthnitzer Straße",
+        |                "time": "13:36",
+        |                "coords": "4620527.00000,503940.00000"
+        |            }
+        |        },
+        |        {...}
+        |        ]
+        |    }, {
+        |        "departure": "14:02",
+        |        "arrival": "14:11",
+        |        "duration": "00:09",
+        |        "interchange": "1",
+        |        "nodes": [...]
+        |    },
+        |    {...}
+        |    ]
+        |}
+
 
     h3 Find a stop
-    p Search for a single stop in the network of the DVB. Also returns the coordinates of this stop (in Gauß-Krüger coordinates, for now at least).
+    p Search for a single stop in the network of the DVB. Also returns the coordinates of this stop (also Gauß-Krüger for now).
 
     pre
         a(href='http://simpledvb.herokuapp.com/api/find/zellesch') /api/find/zellesch
