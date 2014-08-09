@@ -13,9 +13,9 @@ block content
 
     pre
         | [{
-        |   line: "85",
-        |   direction: "Striesen",
-        |   arrivaltime: "4"
+        |     line: "85",
+        |     direction: "Striesen",
+        |     arrivaltime: "4"
         | }]
 
     p You can also specify how many results to return by adding the number to the end of the route.
@@ -25,14 +25,14 @@ block content
 
     pre
         | [{
-        |   line: "85",
-        |   direction: "Striesen",
-        |   arrivaltime: "4"
+        |     line: "85",
+        |     direction: "Striesen",
+        |     arrivaltime: "4"
         | },
         | {
-        |   line: "85",
-        |   direction: "Löbtau Süd",
-        |   arrivaltime: "4"
+        |     line: "85",
+        |     direction: "Löbtau Süd",
+        |     arrivaltime: "4"
         | }]
 
     h3 Find a route
@@ -87,6 +87,20 @@ block content
 
     pre
         | [{
-        |  stop: 'Zellescher Weg',
-        |  coords: '4622580.00000,503749.00000'
+        |     stop: 'Zellescher Weg',
+        |     coords: '4622580.00000,503749.00000'
         | }]
+
+    h3 Info
+    p
+        | Use this API for whatever you like, but please don't stress it too much.
+        | It's running on a single heroku dyno.
+        | That also means that it's put to sleep automatically if not being called for a while.
+        | Just be patient if this happens, Heroku wakes it up and it should work just fine.
+
+    p
+        | This api and site is powered by a small module called
+        =" "
+        a(href='https://github.com/kiliankoe/dvbjs') dvbjs
+        | .
+        | Use it if you want to access DVB data from your backend directly.
