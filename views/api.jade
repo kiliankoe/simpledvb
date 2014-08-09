@@ -39,11 +39,11 @@ block content
         | }]
 
     p
-        | You can also specify a time offset by adding the number of minutes to offset the results by to the end of the route.
+        | Specify a time offset by adding the number of minutes to offset the results by to the end of the route.
         | Doing so will display results from the future accordingly.
 
     pre
-        a(href='/api/monitor/helmholtzstrasse/2') /api/monitor/helmholtzstrasse/2
+        a(href='/api/monitor/helmholtzstrasse/30') /api/monitor/helmholtzstrasse/30
 
     p
         | You can also set the number of results you want by adding
@@ -54,6 +54,8 @@ block content
         | Interestingly enough the maximum amount of results you can get differs from time to time.
         | This is unfortunately not something I can do anything about, you're just going to have to live with it.
         | It is however quite functional and should only limit you in edge cases.
+        | The default number of results is 4, but that also doesn't mean that you always get 4 results.
+        | If some connections are too far off, they might not be inside the results array.
 
     h3 Find a route
     p

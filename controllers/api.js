@@ -12,10 +12,10 @@ module.exports = function(){
     module.monitor = function(req, res){
         var stop = req.params.stop;
 
-        var timeoffset = 0;
-        if (req.query.t) timeoffset = req.query.t;
+        var numresults = 4;
+        if (req.query.n) numresults = req.query.n;
 
-        dvb.monitor(stop, timeoffset, 1, function(data){
+        dvb.monitor(stop, 0, numresults, function(data){
             res.set('Content-Type', 'text/json');
             res.send(data);
         });
