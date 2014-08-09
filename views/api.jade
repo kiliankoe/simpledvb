@@ -2,7 +2,12 @@ extends layout
 
 block content
     h1 SimpleDVB API
-    p.lead SimpleDVB also includes a RESTful API which returns pretty json, use it as follows.
+    p.lead
+        | SimpleDVB exposes a RESTful API at
+        =" "
+        code /api
+        =" "
+        | returning pretty json. Use it as follows.
     hr
 
     h3 Monitor a stop
@@ -18,7 +23,11 @@ block content
         |     arrivaltime: "4"
         | }]
 
-    p You can also specify how many results to return by adding the number to the end of the route.
+    p
+        | You can also specify how many results to return by adding the number to the end of the route.
+        | Interestingly enough the maximum amount of results you can get differs from time to time.
+        | This is unfortunately not something I can do anything about, you're just going to have to live with it.
+        | It is however quite functional and should only limit you in edge cases.
 
     pre
         a(href='http://simpledvb.herokuapp.com/api/monitor/helmholtzstrasse/2') /api/monitor/helmholtzstrasse/2
@@ -36,7 +45,9 @@ block content
         | }]
 
     h3 Find a route
-    p Query the server for possible routes from one stop to another. Returns multiple possible trips, the bus-/tramlines to be taken, the single stops where the interchanges happen, the arrival and departure times for each of these stops and their coordinates (in Gauß-Krüger coordinates, for now at least).
+    p
+        | Query the server for possible routes from one stop to another.
+        | Returns multiple possible trips, the bus-/tramlines to be taken, the single stops where the interchanges happen, the arrival and departure times for each of these stops and their coordinates (in Gauß-Krüger coordinates, for now at least).
 
     pre
         a(href='http://simpledvb.herokuapp.com/api/route/helmholtzstrasse/zellescherweg') /api/route/helmholtzstrasse/zellescherweg
@@ -78,9 +89,37 @@ block content
         |    ]
         |}
 
+    p
+        | You may call this route with different parameters depending on how specific you want to be.
+        | Include just the time or call it with the entire date and time of when you're looking for the route.
+        | If you don't include the date or time, it will default to the current time as in the example above.
+        | Adding 'arr' to any of these URLs will tell the server to interpret the time as arrival time instead of default departure time and return according data.
+
+    pre
+        a(href='http://simpledvb.herokuapp.com/api/route/13/37/helmholtzstrasse/zellescherweg') /api/route/13/37/helmholtzstrasse/zellescherweg
+    pre
+        a(href='http://simpledvb.herokuapp.com/api/route/2014/08/15/13/37/helmholtzstrasse/zellescherweg') /api/route/2014/08/15/13/37/helmholtzstrasse/zellescherweg
+    pre
+        a(href='http://simpledvb.herokuapp.com/api/route/2014/08/15/13/37/helmholtzstrasse/zellescherweg/arr') /api/route/2014/08/15/13/37/helmholtzstrasse/zellescherweg/arr
+
+    p
+        | Be aware though that I cannot vouch for how exact either historic data or data quite a bit in the future turns out to be. Recommended usage is definitely current information ;)
+
 
     h3 Find a stop
-    p Search for a single stop in the network of the DVB. Also returns the coordinates of this stop (also Gauß-Krüger for now).
+    p
+        | Search for a single stop in the network of the DVB.
+        | Also returns the coordinates of this stop (also Gauß-Krüger for now).
+
+    p
+        | Note that all the other methods don't expect perfect stop names, meaning you don't have to look up stops before requesting a route for example.
+        | As long as what you entered exists just once in the DVB database, it'll work.
+        | "zelle" for example is already interpreted as "Zellescher Weg".
+
+    p
+        | The find method is a bit quirky at times as well.
+        | It happily returns everything starting with "Alt", but "Zell" won't return anything.
+        | Please work around this.
 
     pre
         a(href='http://simpledvb.herokuapp.com/api/find/zellesch') /api/find/zellesch
@@ -91,7 +130,7 @@ block content
         |     coords: '4622580.00000,503749.00000'
         | }]
 
-    h3 Info
+    h3 Additional information
     p
         | Use this API for whatever you like, but please don't stress it too much.
         | It's running on a single heroku dyno.
@@ -99,8 +138,29 @@ block content
         | Just be patient if this happens, Heroku wakes it up and it should work just fine.
 
     p
-        | This api and site is powered by a small module called
+        | The code for this simple webapp is available on GitHub (see the footer).
+        | So you can happily host your own copy if you like, on Heroku as well or not.
+        | I'm also grateful for any reported issues and/or pull requests.
+
+    p
+        | This api and site is powered by a relatively small node module called
         =" "
         a(href='https://github.com/kiliankoe/dvbjs') dvbjs
         | .
-        | Use it if you want to access DVB data from your backend directly.
+        | Use it if you want to access DVB data from within your code directly.
+
+    p
+        | All of the data returned by this API of course belongs to the Dresdner Verkehrsbetriebe (DVB).
+        | Please see their site
+        =" "
+        a(href='http://dvb.de') dvb.de
+        =" "
+        | for more information regarding their services.
+        | I'm just offering a slightly easier way to access this information for those wanting to build awesome stuff :)
+
+    p
+        | This service is maintained by
+        =" "
+        a(href='mailto:simpledvb@koeltzs.ch') Kilian Koeltzsch
+        | .
+        | Please contact me should any questions arise.

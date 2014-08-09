@@ -12,7 +12,10 @@ module.exports = function(){
     module.monitor = function(req, res){
         var stop = req.params.stop;
 
-        dvb.monitor(stop, 0, 1, function(data){
+        var timeoffset = 0;
+        if (req.query.offset) timeoffset = req.query.offset;
+
+        dvb.monitor(stop, timeoffset, 1, function(data){
             res.set('Content-Type', 'text/json');
             res.send(data);
         });
@@ -22,7 +25,10 @@ module.exports = function(){
         var stop = req.params.stop;
         var numresults = req.params.numresults;
 
-        dvb.monitor(stop, 0, numresults, function(data){
+        var timeoffset = 0;
+        if (req.query.offset) timeoffset = req.query.offset;
+
+        dvb.monitor(stop, timeoffset, numresults, function(data){
             res.set('Content-Type', 'text/json');
             res.send(data);
         });
@@ -33,9 +39,42 @@ module.exports = function(){
         var destination = req.params.destination;
         var time = new Date();
 
-        dvb.route(origin, destination, time, 0, function(data){
+        var deparr = 0;
+        if (req.params.deparr === 'arr') deparr = 1;
+
+        dvb.route(origin, destination, time, deparr, function(data){
              res.set('Content-Type', 'text/json');
              res.send(data);
+        });
+    };
+
+    module.fullRoute = function(req, res){
+        var time = new Date(req.params.year, req.params.month, req.params.day, req.params.hour, req.params.minute);
+        var origin = req.params.origin;
+        var destination = req.params.destination;
+
+        var deparr = 0;
+        if (req.params.deparr === 'arr') deparr = 1;
+
+        dvb.route(origin, destination, time, deparr, function(data){
+            res.set('Content-Type', 'text/json');
+            res.send(data);
+        });
+    };
+
+    module.timeRoute = function(req, res){
+        var time = new Date();
+        time.setHours(req.params.hour);
+        time.setMinutes(req.params.minute);
+        var origin = req.params.origin;
+        var destination = req.params.destination;
+
+        var deparr = 0;
+        if (req.params.deparr === 'arr') deparr = 1;
+
+        dvb.route(origin, destination, time, deparr, function(data){
+            res.set('Content-Type', 'text/json');
+            res.send(data);
         });
     };
 
