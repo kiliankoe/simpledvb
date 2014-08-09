@@ -14,23 +14,7 @@ block content
     p Monitor a single stop to see every bus or tram leaving this stop.
 
     pre
-        a(href='http://simpledvb.herokuapp.com/api/monitor/helmholtzstrasse') /api/monitor/helmholtzstrasse
-
-    pre
-        | [{
-        |     line: "85",
-        |     direction: "Striesen",
-        |     arrivaltime: "4"
-        | }]
-
-    p
-        | You can also specify how many results to return by adding the number to the end of the route.
-        | Interestingly enough the maximum amount of results you can get differs from time to time.
-        | This is unfortunately not something I can do anything about, you're just going to have to live with it.
-        | It is however quite functional and should only limit you in edge cases.
-
-    pre
-        a(href='http://simpledvb.herokuapp.com/api/monitor/helmholtzstrasse/2') /api/monitor/helmholtzstrasse/2
+        a(href='/api/monitor/helmholtzstrasse') /api/monitor/helmholtzstrasse
 
     pre
         | [{
@@ -42,15 +26,34 @@ block content
         |     line: "85",
         |     direction: "Löbtau Süd",
         |     arrivaltime: "4"
+        | },
+        | {
+        |     line: "85",
+        |     direction: "Striesen",
+        |     arrivaltime: "12"
+        | },
+        | {
+        |     line: "85",
+        |     direction: "Löbtau Süd",
+        |     arrivaltime: "14"
         | }]
 
     p
-        | For the time being you can also set the timeoffset by adding
+        | You can also specify a time offset by adding the number of minutes to offset the results by to the end of the route.
+        | Doing so will display results from the future accordingly.
+
+    pre
+        a(href='/api/monitor/helmholtzstrasse/2') /api/monitor/helmholtzstrasse/2
+
+    p
+        | You can also set the number of results you want by adding
         =" "
-        code ?t=30
+        code ?n=10
         =" "
         | to the end of the URL.
-        | This would then for this example display information 30 minutes from now.
+        | Interestingly enough the maximum amount of results you can get differs from time to time.
+        | This is unfortunately not something I can do anything about, you're just going to have to live with it.
+        | It is however quite functional and should only limit you in edge cases.
 
     h3 Find a route
     p
@@ -58,7 +61,7 @@ block content
         | Returns multiple possible trips, the bus-/tramlines to be taken, the single stops where the interchanges happen, the arrival and departure times for each of these stops and their coordinates (in Gauß-Krüger coordinates, for now at least).
 
     pre
-        a(href='http://simpledvb.herokuapp.com/api/route/helmholtzstrasse/zellescherweg') /api/route/helmholtzstrasse/zellescherweg
+        a(href='/api/route/helmholtzstrasse/zellescherweg') /api/route/helmholtzstrasse/zellescherweg
 
     pre
         | {
@@ -134,7 +137,7 @@ block content
         | Please work around this.
 
     pre
-        a(href='http://simpledvb.herokuapp.com/api/find/zellesch') /api/find/zellesch
+        a(href='/api/find/zellesch') /api/find/zellesch
 
     pre
         | [{

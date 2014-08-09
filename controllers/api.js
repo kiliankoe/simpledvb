@@ -21,12 +21,12 @@ module.exports = function(){
         });
     };
 
-    module.monitorNum = function(req, res){
+    module.timeMonitor = function(req, res){
         var stop = req.params.stop;
-        var numresults = req.params.numresults;
+        var timeoffset = req.params.timeoffset;
 
-        var timeoffset = 0;
-        if (req.query.offset) timeoffset = req.query.offset;
+        var numresults = 4;
+        if (req.query.n) numresults = req.query.n;
 
         dvb.monitor(stop, timeoffset, numresults, function(data){
             res.set('Content-Type', 'text/json');

@@ -60,7 +60,7 @@ app.get('/', homeController.index);
 
 app.get('/api', apiController.index);
 
-app.get('/api/monitor/:stop/:numresults', apiController.monitorNum);
+app.get('/api/monitor/:stop/:timeoffset', apiController.timeMonitor);
 app.get('/api/monitor/:stop', apiController.monitor);
 
 app.get('/api/route/:origin/:destination/:year/:month/:day/:hour/:minute/:deparr', apiController.fullRoute);
