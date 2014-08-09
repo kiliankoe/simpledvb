@@ -13,7 +13,7 @@ module.exports = function(){
         var stop = req.params.stop;
 
         var timeoffset = 0;
-        if (req.query.offset) timeoffset = req.query.offset;
+        if (req.query.t) timeoffset = req.query.t;
 
         dvb.monitor(stop, timeoffset, 1, function(data){
             res.set('Content-Type', 'text/json');

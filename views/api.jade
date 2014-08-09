@@ -44,6 +44,14 @@ block content
         |     arrivaltime: "4"
         | }]
 
+    p
+        | For the time being you can also set the timeoffset by adding
+        =" "
+        code ?t=30
+        =" "
+        | to the end of the URL.
+        | This would then for this example display information 30 minutes from now.
+
     h3 Find a route
     p
         | Query the server for possible routes from one stop to another.
@@ -93,7 +101,11 @@ block content
         | You may call this route with different parameters depending on how specific you want to be.
         | Include just the time or call it with the entire date and time of when you're looking for the route.
         | If you don't include the date or time, it will default to the current time as in the example above.
-        | Adding 'arr' to any of these URLs will tell the server to interpret the time as arrival time instead of default departure time and return according data.
+        | Adding
+        =" "
+        code /arr
+        =" "
+        | to any of these URLs will tell the server to interpret the time as arrival time instead of default departure time and return according data.
 
     pre
         a(href='/api/route/helmholtzstrasse/zellescherweg/13/37') /api/route/helmholtzstrasse/zellescherweg/13/37
