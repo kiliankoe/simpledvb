@@ -37,7 +37,10 @@ module.exports = function(){
     module.route = function(req, res){
         var origin = req.params.origin;
         var destination = req.params.destination;
+
         var time = new Date();
+        var utc = time.getTime() + (time.getTimezoneOffset() * 60000);
+        time = new Date(utc + (3600000 * 2));
 
         var deparr = 0;
         if (req.params.deparr === 'arr') deparr = 1;

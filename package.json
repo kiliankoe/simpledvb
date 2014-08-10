@@ -1,6 +1,6 @@
 {
   "name": "simpledvb",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "simple interaction with Dresden's public transport",
   "main": "app.js",
   "repository": {
