@@ -27,7 +27,7 @@
     "body-parser": "^1.4.3",
     "compression": "^1.0.8",
     "connect-assets": "^4.0.1",
-    "dvbjs": "^1.0.0",
+    "dvbjs": "^1.1.0",
     "errorhandler": "^1.1.1",
     "express": "^4.5.1",
     "express-flash": "^0.0.2",
