@@ -60,7 +60,7 @@ block content
     h3 Find a route
     p
         | Query the server for possible routes from one stop to another.
-        | Returns multiple possible trips, the bus-/tramlines to be taken, the single stops where the interchanges happen, the arrival and departure times for each of these stops and their coordinates (in Gauß-Krüger coordinates, for now at least).
+        | Returns multiple possible trips, the bus-/tramlines to be taken, the single stops where the interchanges happen, the arrival and departure times for each of these stops and their coordinates.
 
     pre
         a(href='/api/route/helmholtzstrasse/zellescherweg') /api/route/helmholtzstrasse/zellescherweg
@@ -126,7 +126,7 @@ block content
     h3 Find a stop
     p
         | Search for a single stop in the network of the DVB.
-        | Also returns the coordinates of this stop (also Gauß-Krüger for now).
+        | Also returns the coordinates of this stop.
 
     p
         | Note that all the other methods don't expect perfect stop names, meaning you don't have to look up stops before requesting a route for example.
