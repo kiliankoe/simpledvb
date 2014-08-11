@@ -1,6 +1,6 @@
 {
   "name": "simpledvb",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "simple interaction with Dresden's public transport",
   "main": "app.js",
   "repository": {
@@ -27,7 +27,7 @@
     "body-parser": "^1.4.3",
     "compression": "^1.0.8",
     "connect-assets": "^4.0.1",
-    "dvbjs": "^1.1.0",
+    "dvbjs": "^1.2.0",
     "errorhandler": "^1.1.1",
     "express": "^4.5.1",
     "express-flash": "^0.0.2",

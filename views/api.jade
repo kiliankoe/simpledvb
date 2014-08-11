@@ -62,6 +62,10 @@ block content
         | Query the server for possible routes from one stop to another.
         | Returns multiple possible trips, the bus-/tramlines to be taken, the single stops where the interchanges happen, the arrival and departure times for each of these stops and their coordinates.
 
+    p
+        | The path property contains an array consisting of all the coordinates describing the path of this node.
+        | Useful for example to draw on a map.
+
     pre
         a(href='/api/route/helmholtzstrasse/zellescherweg') /api/route/helmholtzstrasse/zellescherweg
 
@@ -87,7 +91,8 @@ block content
         |                "stop": "Plauen Nöthnitzer Straße",
         |                "time": "13:36",
         |                "coords": [ 51.027625, 13.715769 ]
-        |            }
+        |            },
+        |            "path": [[ 51.02554, 13.725471 ],[ 51.02557, 13.725286 ], ...]
         |        },
         |        {...}
         |        ]
