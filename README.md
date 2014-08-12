@@ -1,4 +1,4 @@
-![simpledvb](http://i.imgur.com/nlod9kM.png)
+![simpledvb](./images/simpledvb.png)
 
 ## SimpleDVB
 
