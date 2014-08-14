@@ -42,35 +42,11 @@ module.exports = function(){
         var utc = time.getTime() + (time.getTimezoneOffset() * 60000);
         time = new Date(utc + (3600000 * 2));
 
-        var deparr = 0;
-        if (req.params.deparr === 'arr') deparr = 1;
-
-        dvb.route(origin, destination, time, deparr, function(data){
-             res.set('Content-Type', 'text/json');
-             res.send(data);
-        });
-    };
-
-    module.fullRoute = function(req, res){
-        var time = new Date(req.params.year, req.params.month, req.params.day, req.params.hour, req.params.minute);
-        var origin = req.params.origin;
-        var destination = req.params.destination;
-
-        var deparr = 0;
-        if (req.params.deparr === 'arr') deparr = 1;
-
-        dvb.route(origin, destination, time, deparr, function(data){
-            res.set('Content-Type', 'text/json');
-            res.send(data);
-        });
-    };
-
-    module.timeRoute = function(req, res){
-        var time = new Date();
-        time.setHours(req.params.hour);
-        time.setMinutes(req.params.minute);
-        var origin = req.params.origin;
-        var destination = req.params.destination;
+        if (req.query.y) time.setYear(req.query.y);
+        if (req.query.m) time.setMonth(req.query.m);
+        if (req.query.d) time.setDate(req.query.d);
+        if (req.query.h) time.setHours(req.query.h);
+        if (req.query.i) time.setMinutes(req.query.i);
 
         var deparr = 0;
         if (req.params.deparr === 'arr') deparr = 1;

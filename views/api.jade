@@ -109,8 +109,13 @@ block content
 
     p
         | You may call this route with different parameters depending on how specific you want to be.
-        | Include just the time or call it with the entire date and time of when you're looking for the route.
+        | Include just the time or call it with the entire date and time for the point in time when you're looking for the route.
         | If you don't include the date or time, it will default to the current time as in the example above.
+        | The parameters
+        =" "
+        code y, m, d, h, i
+        =" "
+        | will match to year, month, day, hour and minute accordingly.
         | Adding
         =" "
         code /arr
@@ -118,15 +123,14 @@ block content
         | to any of these URLs will tell the server to interpret the time as arrival time instead of default departure time and return according data.
 
     pre
-        a(href='/api/route/helmholtzstrasse/zellescherweg/13/37') /api/route/helmholtzstrasse/zellescherweg/13/37
+        a(href='/api/route/helmholtzstrasse/zellescherweg?h=13&i=37') /api/route/helmholtzstrasse/zellescherweg?h=13&amp;i=37
+    p Looks up a route between "Helmholtzstraße" and "Zellescher Weg" today at 13:37.
     pre
-        a(href='/api/route/helmholtzstrasse/zellescherweg/2014/08/15/13/37') /api/route/helmholtzstrasse/zellescherweg/2014/08/15/13/37
+        a(href='/api/route/helmholtzstrasse/zellescherweg?y=2014&m=08&d=15&h=13&i=37') /api/route/helmholtzstrasse/zellescherweg?y=2014&amp;m=08&amp;d=15&amp;h=13&amp;i=37
+    p Same route on the 15. of August 2014 at 13:37.
     pre
-        a(href='/api/route/helmholtzstrasse/zellescherweg/2014/08/15/13/37/arr') /api/route/helmholtzstrasse/zellescherweg/2014/08/15/13/37/arr
-
-    p
-        | Be aware though that I cannot vouch for how exact either historic data or data quite a bit in the future turns out to be. Recommended usage is definitely current information ;)
-
+        a(href='/api/route/helmholtzstrasse/zellescherweg/arr?y=2014&m=08&d=15&h=13&i=37') /api/route/helmholtzstrasse/zellescherweg/arr?y=2014&amp;m=08&amp;d=15&amp;h=13&amp;i=37
+    p Same as above, but 13:37 is now the time of arrival, not departure.
 
     h3 Find a stop
     p

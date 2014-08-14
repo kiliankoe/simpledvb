@@ -63,12 +63,6 @@ app.get('/api', apiController.index);
 app.get('/api/monitor/:stop/:timeoffset', apiController.timeMonitor);
 app.get('/api/monitor/:stop', apiController.monitor);
 
-app.get('/api/route/:origin/:destination/:year/:month/:day/:hour/:minute/:deparr', apiController.fullRoute);
-app.get('/api/route/:origin/:destination/:year/:month/:day/:hour/:minute', apiController.fullRoute);
-
-app.get('/api/route/:origin/:destination/:hour/:minute/:deparr', apiController.timeRoute);
-app.get('/api/route/:origin/:destination/:hour/:minute', apiController.timeRoute);
-
 app.get('/api/route/:origin/:destination/:deparr', apiController.route);
 app.get('/api/route/:origin/:destination', apiController.route);
 
