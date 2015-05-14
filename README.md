@@ -1,3 +1,5 @@
+### This project has been abandoned (at least for now). The current implementation isn't all that great and the DVB/VVO is [reportedly](https://twitter.com/DVBAG/status/536907718062538753) working on an updated API, so let's just see what happens there.
+
 ![simpledvb](./images/simpledvb.png)
 
 ## SimpleDVB
